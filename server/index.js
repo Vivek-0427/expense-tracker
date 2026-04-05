@@ -5,19 +5,19 @@ const app = express();
 
 // ✅ Define allowed origins
 const allowedOrigins = [
-  "http://localhost:5173", // local frontend
-  "https://your-frontend.vercel.app" // replace after deploy
+  "http://localhost:5173", // 🔥 THIS IS THE KEY FIX
+  "http://localhost:3000",
+  "https://your-frontend.vercel.app"
 ];
 
-// ✅ Proper CORS setup
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // allow Postman/curl
+    if (!origin) return callback(null, true);
 
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
-      return callback(new Error("CORS not allowed"));
+      return callback(new Error("CORS not allowed: " + origin));
     }
   },
   credentials: true
