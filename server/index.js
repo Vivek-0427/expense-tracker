@@ -7,7 +7,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173", // 🔥 THIS IS THE KEY FIX
   "http://localhost:3000",
-  "https://your-frontend.vercel.app"
+  "https://expense-tracker-sable-iota-40.vercel.app"
 ];
 
 app.use(cors({
