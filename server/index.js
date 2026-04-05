@@ -6,6 +6,7 @@ const app = express();
 // ✅ Define allowed origins
 const allowedOrigins = [
   "http://localhost:3000", // local frontend
+  "http://localhost:5173", // local frontend
   "https://your-frontend.vercel.app" // replace after deploy
 ];
 

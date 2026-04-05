@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Transactions from "./pages/Transactions";
 import Insights from "./pages/Insights";
 
-const API = "http://localhost:4000/api";
+const API = "https://expense-tracker-zr02.onrender.com/api";
 
 export const CATEGORIES = ["Food","Transport","Shopping","Entertainment","Health","Housing","Utilities","Salary","Freelance","Investment","Education","Other"];
 export const ICONS = { Food:"🍜", Transport:"🚌", Shopping:"🛍️", Entertainment:"🎬", Health:"💊", Housing:"🏠", Utilities:"⚡", Salary:"💼", Freelance:"💻", Investment:"📈", Education:"📚", Other:"📦" };
