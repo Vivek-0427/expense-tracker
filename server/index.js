@@ -2,7 +2,27 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+
+// ✅ Define allowed origins
+const allowedOrigins = [
+  "http://localhost:3000", // local frontend
+  "https://your-frontend.vercel.app" // replace after deploy
+];
+
+// ✅ Proper CORS setup
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // allow Postman/curl
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("CORS not allowed"));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
 
 let transactions = [
@@ -71,5 +91,8 @@ app.delete("/api/transactions/:id", (req, res) => {
   res.json({ success: true });
 });
 
-const PORT = 4000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+// const PORT = 4000;
+// app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
